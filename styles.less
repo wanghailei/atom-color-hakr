@@ -33,13 +33,177 @@ atom-text-editor {
 		border-width: 1px;
 	}
 	.gutter {
-		width: 100px;
+		width: 80px;
 		background-color: black;
 		.line-numbers  { // This line need to be kept for showing current line background.
 			.line-number {
-				color: #00B500;
+				color: #444444;
 				width: 80px;
 			}
+		}
+	}
+}
+
+.syntax--source.syntax--ini {
+	.syntax--keyword.syntax--other.syntax--definition.syntax--ini {
+		color: blue;
+	}
+}
+
+atom-text-editor::shadow {
+	.comment {
+		color: #333333;
+		font-weight: normal;
+		font-style: normal;
+		.markup {
+
+		}
+		.link {
+			font-style: normal;
+		}
+	}
+	.keyword {
+		color: red;
+		.control {
+
+		}
+		.operator {
+		}
+		.other {
+			.special-method {
+			}
+			.unit {
+
+			}
+		}
+	}
+	.entity {
+		color: green;
+		&.type {
+			color: red;
+		}
+		&.inherited-class {
+
+		}
+		&.name {
+			color: green;
+			&.tag {
+				color: green;
+			}
+		}
+		&.other {
+			&.attribute-name {
+				color: #00B500;
+				&.id {
+
+				}
+			}
+		}
+	}
+	.constant {
+		color: #00B500;
+
+		.variable {
+			color: white;
+		}h
+		.character {
+			escape {
+			}
+		}
+		.numeric {
+
+		}
+		.other {
+			.color {
+
+			}
+			.symbol {
+
+			}
+		}
+	}
+
+	.variable {
+		color: gray;
+
+		.paramerter {
+			color: blue;
+		}
+		.interpolation {
+
+		}
+	}
+	.function {
+		color: green;
+	}
+	.definition {
+	}
+	.storage {
+		color: red;
+		.type {
+
+		}
+		.modifier {
+			.package {
+
+			}
+			.import {
+
+			}
+		}
+	}
+	.require {
+		color: green;
+	}
+	.punctuation {
+		color: green;
+	}
+	.string {
+		color: #AAAAAA;
+	}
+	.tag {
+		color: green;
+	}
+	.selectr {
+		color: #FAD700;
+	}
+	.section {
+
+	}
+	.markup {
+		color: gray;
+	}
+	.quote {
+	}
+	.support {
+		color: gray;
+	}
+}
+
+.syntax--source.syntax--css {
+	.syntax--property-name,
+	.syntax--property-value {
+		//   color: blue;
+		&.syntax--support {
+			color: #AAAAAA;
+		}
+	}
+}
+
+.syntax--source.syntax--js {
+	.syntax--keyword.syntax--operator {
+		color: white;
+
+		// keywords are definded in https://github.com/atom/language-javascript/blob/master/grammars/javascript.cson
+		// search "instanceof" for location
+		&.syntax--delete,
+		&.syntax--in,
+		&.syntax--of,
+		&.syntax--instanceof,
+		&.syntax--new,
+		&.syntax--typeof,
+		&.syntax--void {
+			color: red;
 		}
 	}
 }
