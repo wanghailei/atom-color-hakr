@@ -5,19 +5,42 @@
 * when it is changed and saved.
 *
 * Add your own CSS or Less to fully customize Atom.
-* If you are unfamiliar with Less, you can read more about it here:
-* http://lesscss.org
 */
+
+@color-green: #00FF00;
+@color-green-dark: #009900;
+@color-green-hakr: #00B500;
+
+@color-black: #000000;
+@color-black-lite: #111111;
+@color-gray-30: #333333;
+@color-gray-40: #444444;
+@color-gray-70: #AAAAAA;
+@color-gray-80: #DDDDDD;
+@color-gray-90: #EEEEEE;
+
+@color-red: #FF0000;
+
+@color-yellow-hakr: #FAD700;
+
+.sharp-corner {
+	border-radius: 0 !important;
+}
+.bg-black {
+	background-color: @color-black;
+}
+
+
 
 atom-workspace {
 	font-family:"sfmono-regular";
-	color: #00B500;
-	background-color: black;
+	color: @color-green-hakr;
+	.bg-black;
 
 	button {
 		border-radius: 0 !important;
-		border-width:0 !important;
-		color: #00B500 !important;
+		border-width: 0 !important;
+		color: @color-green-hakr !important;
 	}
 
 	input {
@@ -26,156 +49,155 @@ atom-workspace {
 }
 
 atom-text-editor {
-	color: #00B500;
-	background-color: black;
+	color: @color-green-hakr;
+	.bg-black;
 	.cursor {
-		border-color: red;
+		border-color: @color-red;
 		border-width: 1px;
 	}
 	.gutter {
 		width: 80px;
-		background-color: black;
+		.bg-black;
 		.line-numbers  { // This line need to be kept for showing current line background.
 			.line-number {
-				color: #444444;
+				color: @color-gray-40;
 				width: 80px;
 			}
 		}
 	}
 }
 
-.syntax--source.syntax--ini {
-	.syntax--keyword.syntax--other.syntax--definition.syntax--ini {
-		color: blue;
-	}
-}
-
-atom-text-editor::shadow {
-	.comment {
+atom-text-editor {
+	.syntax--comment {
 		color: #333333;
 		font-weight: normal;
 		font-style: normal;
-		.markup {
+
+		&.syntax--markup {
 
 		}
-		.link {
+		&.syntax--link {
 			font-style: normal;
 		}
 	}
-	.keyword {
-		color: red;
-		.control {
+	.syntax--keyword {
+		color: @color-red;
+
+		.syntax--control {
 
 		}
-		.operator {
+		.syntax--operator {
 		}
-		.other {
-			.special-method {
+		.syntax--other {
+			.syntax--special-method {
 			}
-			.unit {
+			.syntax--unit {
 
 			}
 		}
 	}
-	.entity {
-		color: green;
-		&.type {
-			color: red;
+	.syntax--entity {
+		color: @color-green-dark;
+
+		&.syntax--type {
+			color: @color-red;
 		}
-		&.inherited-class {
+		&.syntax--inherited-class {
 
 		}
-		&.name {
-			color: green;
-			&.tag {
-				color: green;
+		&.syntax--name {
+			color: @color-green-dark;
+
+			&.syntax--tag {
+				color: @color-green-dark;
 			}
 		}
-		&.other {
-			&.attribute-name {
-				color: #00B500;
-				&.id {
+		&.syntax--other {
+			&.syntax--attribute-name {
+				color: @color-green-hakr;
+
+				&.syntax--id {
 
 				}
 			}
 		}
 	}
-	.constant {
-		color: #00B500;
+	.syntax--constant {
+		color: @color-green-hakr;
 
-		.variable {
+		&.syntax--variable {
 			color: white;
-		}h
-		.character {
-			escape {
+		}
+		&.syntax--character {
+			.syntax--escape {
 			}
 		}
-		.numeric {
+		&.syntax--numeric {
 
 		}
-		.other {
-			.color {
+		&.syntax--other {
+			&.syntax--color {
 
 			}
-			.symbol {
+			&.syntax--symbol {
 
 			}
 		}
 	}
 
-	.variable {
+	.syntax--variable {
 		color: gray;
 
-		.paramerter {
+		&.syntax--paramerter {
 			color: blue;
 		}
-		.interpolation {
+		&.syntax--interpolation {
 
 		}
 	}
-	.function {
-		color: green;
+	.syntax--function {
+		color: @color-green-dark;
 	}
-	.definition {
+	.syntax--definition {
 	}
-	.storage {
-		color: red;
-		.type {
+	.syntax--storage {
+		color: @color-red;
+		&.syntax--type {
 
 		}
-		.modifier {
-			.package {
+		&.syntax--modifier {
+			&.syntax--package {
 
 			}
-			.import {
+			&.syntax--import {
 
 			}
 		}
 	}
-	.require {
-		color: green;
+	.syntax--require {
+		color: @color-green-dark;
 	}
-	.punctuation {
-		color: green;
+	.syntax--punctuation {
+		color: @color-green-dark;
 	}
-	.string {
+	.syntax--string {
 		color: #AAAAAA;
 	}
-	.tag {
-		color: green;
+	.syntax--tag {
+		color: @color-green-dark;
 	}
-	.selectr {
+	.syntax--selectr {
 		color: #FAD700;
 	}
-	.section {
+	.syntax--section {
 
 	}
-	.markup {
+	.syntax--markup {
 		color: gray;
 	}
-	.quote {
+	.syntax--quote {
 	}
-	.support {
+	.syntax--support {
 		color: gray;
 	}
 }
@@ -194,8 +216,6 @@ atom-text-editor::shadow {
 	.syntax--keyword.syntax--operator {
 		color: white;
 
-		// keywords are definded in https://github.com/atom/language-javascript/blob/master/grammars/javascript.cson
-		// search "instanceof" for location
 		&.syntax--delete,
 		&.syntax--in,
 		&.syntax--of,
@@ -203,45 +223,52 @@ atom-text-editor::shadow {
 		&.syntax--new,
 		&.syntax--typeof,
 		&.syntax--void {
-			color: red;
+			color: @color-red;
 		}
 	}
 }
 
 .tree-view::before {
-	color: #00B500;
+	color: @color-green-hakr;
 }
 
 .tree-view {
+	.project-root {
+
+	}
 	.name {
 		font-family:"sfmono-regular";
-		color: #00B500;
+		color: @color-green-hakr;
 		&:hover {
-			color: red;
+			color: @color-red;
 		}
 	}
-	border-right: 1px solid #00B500;
-	background-color: black;
+	.header {
+		color: @color-green-hakr;
+	}
+	// border-right: 1px solid #00B500;
+	.bg-black;
 
 	.selected:before {
+		background-color: @color-black-lite;
 	}
 }
 
 .tab-bar {
-	background-color: black;
+	.bg-black;
 
 	// Tab ----------------------
 	.tab {
-		color: #00B500;
-		background-color: black;
+		color: @color-green-hakr;
+		.bg-black;
 		&.active {
 			.title {
-				color: white;
+				color: @color-black;
 			}
-			background-color: black;
+			background-color: @color-green-hakr !important;
 		}
 		&:hover {
-			color: red;
+			color: @color-red;
 		}
 
 		.title {
@@ -251,43 +278,72 @@ atom-text-editor::shadow {
 			border-radius: 20px;
 			&:hover {
 				color: black;
-				background-color: red;
+				background-color: @color-red;
 			}
 			&:active {
-				background-color: #00B500;
+				background-color: @color-green-hakr;
 				color: black;
 			}
 		}
 	}
 }
 
+
+.scrollbars-visible-when-scrolling ::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	.bg-black;
+
+	&-track {
+		border: 0px;
+		border-radius: 0px;
+		background-color: @color-black !important;
+	}
+
+	&-thumb {
+		background-color: @color-green-dark !important;
+		border: 0px;
+		border-radius: 0px;
+
+		&:hover {
+			background-color: @color-green-hakr !important;
+		}
+
+		&:window-inactive {
+		}
+	}
+
+	&-corner {
+	}
+}
+
 //My awesome tab
 // .tab-bar .tab.active[data-type="TextEditor"]::after {
-// background-color: black;
+// .bg-black;
 // border-bottom: whiTe;
 // }
 
 // .tab-bar .tab.active[data-type$="Editor"] .title {
-//  background-color: black;
+//  .bg-black;
 //  z-index: 2;
 //  }
 
 .status-bar {
 	color: black;
-	background-color: #00B500;
+	background-color: @color-green-hakr;
 	font-family:"sfmono-regular";
 
 	.inline-block {
 		color: black;
 		&:hover {
-			color: red;
+			color: @color-red;
 			text-decoration: none;
 		}
 	}
 	a {
 		color: black;
 		&:hover {
-			color: red;
+			color: @color-red;
 			text-decoration: none;
 		}
 	}
@@ -296,10 +352,20 @@ atom-text-editor::shadow {
 
 atom-panel {
 	//	border: 1px solid #00B500;
-	background-color: #00B500;
+	background-color: @color-green-hakr;
 }
 
 atom-pane {
 	//	border: 1px solid #00B500;
-	background-color: #00B500;
+	background-color: @color-green-hakr;
 }
+
+
+// atom-text-editor ::-webkit-scrollbar {
+//   &-track { background-color: blue !important;}
+//   &-corner { background-color: initial !important;}
+//   &-thumb {
+//     background-color: green !important;
+//     border-color: transparent !important;
+//   }
+//  }
